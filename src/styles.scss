@@ -1,1 +1,168 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+//@include mat-core();
+
+$custom-typography: mat-typography-config(
+  $font-family: "'Montserrat', sans-serif",
+  //$font-family: "'Poppins', sans-serif",
+  $display-4:     mat-typography-level(112px, 112px, 400, $letter-spacing: -0.05em),
+  $display-3:     mat-typography-level(56px, 56px, 500, $letter-spacing: -0.02em),
+  $display-2:     mat-typography-level(45px, 48px, 500, $letter-spacing: -0.005em),
+  $display-1:     mat-typography-level(34px, 40px, 500),
+  $headline:      mat-typography-level(24px, 32px, 500),
+  $title:         mat-typography-level(20px, 32px, 600),
+  $subheading-2:  mat-typography-level(18px, 28px, 600),
+  $subheading-1:  mat-typography-level(16px, 24px, 600),
+  $body-2:        mat-typography-level(16px, 24px, 600),
+  $body-1:        mat-typography-level(16px, 20px, 600),
+  $caption:       mat-typography-level(14px, 20px, 600),
+  $button:        mat-typography-level(16px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 500)
+);
+@include mat-core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$fashionista-ui-primary: mat-palette($mat-indigo);
+$fashionista-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$fashionista-ui-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$fashionista-ui-theme: mat-light-theme((
+  color: (
+    primary: $fashionista-ui-primary,
+    accent: $fashionista-ui-accent,
+    warn: $fashionista-ui-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($fashionista-ui-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+$ui-primary: #3884ff;
+$ui-warning: #ff9447;
+$ui-danger: #ff4747;
+$ui-success: #24aa86;
+$ui-dark: #000000;
+$ui-secondary: #949599;
+$ui-info: #d9d566;
+$ui-light: #f8f8ff;
+
+.mat-ui-primary {
+  background-color: $ui-primary !important;
+  color: #FFFFFF !important;
+}
+.ui-color-primary {
+  color: $ui-primary !important;
+}
+
+.mat-ui-warning {
+  background-color: $ui-warning !important;
+  color: #FFFFFF !important;
+}
+.ui-color-warning {
+  color: $ui-warning !important;
+}
+
+.mat-ui-danger {
+  background-color: $ui-danger !important;
+  color: #FFFFFF !important;
+}
+.ui-color-danger {
+  color: $ui-danger !important;
+}
+
+.mat-ui-success {
+  background-color: $ui-success !important;
+  color: #FFFFFF !important;
+}
+.ui-color-success {
+  color: $ui-success !important;
+}
+
+.mat-ui-dark {
+  background-color: $ui-dark !important;
+  color: #FFFFFF !important;
+}
+.ui-color-dark {
+  color: $ui-dark !important;
+}
+
+.mat-ui-secondary{
+  background-color: $ui-secondary !important;
+  color: #FFFFFF !important;
+}
+.ui-color-secondary{
+  color: #949599 !important;
+}
+
+.mat-ui-info{
+  background-color: $ui-info !important;
+  color: #000000 !important;
+}
+.ui-color-info{
+  color: $ui-info !important;
+}
+
+.mat-ui-light{
+  background-color: $ui-light !important;
+  color: #24aa86 !important;
+}
+.ui-color-light{
+  color: $ui-light !important;
+}
+
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; 	text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button[disabled]:not(.regular-disabled) {
+  background: grey !important;
+  opacity: 0.5;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float {
+  &.ng-valid .mat-form-field-label {
+    color: #35cb1d;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.custom-toastr {
+  width: 400px !important;
+  box-shadow: 0.3rem 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.1) !important;
+  .toast-title {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+

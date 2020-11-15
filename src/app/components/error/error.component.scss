@@ -1,0 +1,89 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "c c c c"
+    "m m m m"
+    "b b b b";
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1500px;
+
+  .code {
+    grid-area: c;
+    font-weight: 800;
+    letter-spacing: 10px;
+    font-size: 14vw;
+    line-height: 14vw;
+    height: 14vw;
+    text-align: center;
+  }
+
+  .message {
+    grid-area: m;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    text-align: justify;
+  }
+
+  .btn {
+    grid-area: b;
+    align-self: start;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    padding: 0 !important;
+
+    fa-icon {
+      color: #FFFFFF;
+      margin-right: 10px;
+    }
+    span {
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+@media all and (min-width: 576px)  {
+  .wrapper-grid {
+    .message {
+      font-size: 1.4rem !important;
+      line-height: 1.4rem !important;
+    }
+  }
+}
+
+@media all and (min-width: 992px)  {
+  .wrapper-grid {
+
+    grid-template-columns: auto auto 1fr 1fr;
+    grid-template-areas:
+      "c c m m"
+      "b b b b";
+    grid-gap: 40px 10px;
+
+    .code {
+      font-size: 150px !important;
+      line-height: 150px !important;
+      height: 150px !important;
+      border-right: 4px solid #ff4747;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+}

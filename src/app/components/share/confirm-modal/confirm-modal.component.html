@@ -1,0 +1,14 @@
+<div class="confirm-modal">
+  <div class="title">{{data?.title}}</div>
+  <div class="msg">{{data?.msg}}</div>
+  <div class="action-button">
+    <button class="btn btn-outline-danger" type="button" [mat-dialog-close]="true">
+      <i class="material-icons">done_outline</i>&nbsp;
+      <span class="h6">Yes, let's do it</span>
+    </button>
+    <button class="btn btn-outline-primary" type="button" (click)="cancel()" cdkFocusInitial>
+      <span class="h6">No. I'll reconsider</span>
+    </button>
+  </div>
+</div>
+

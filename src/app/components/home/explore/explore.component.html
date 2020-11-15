@@ -1,0 +1,19 @@
+<div class="row" @fadeInFWD>
+  <div class="col-xl-4 col-md-6 mb-5" *ngFor="let product of products" [routerLink]="['/', 'home', 'detail', product?._id]">
+    <div class="card product-card shadow">
+      <div class="header">
+        <div class="h-100 w-100 overflow-hidden img-wrapper">
+          <img class="product-image" [src]="product?.image" alt="product-img">
+        </div>
+        <div class="info">
+          <mat-icon>label</mat-icon>
+          <span class="">{{product?.price | currency }}</span>
+        </div>
+      </div>
+      <div class="body">
+        <div class="title">{{product?.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+

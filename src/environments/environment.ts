@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  WEBSOCKET_URL: 'http://localhost:3000',
+  WEBSOCKET_PATH: '/chat',
+  API_URL: 'http://localhost:3000/api',
+  RANDOM_TEXT: 'MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgFjl8oDFYtzsAaQ5a+xdz6jpQ2R1pSUaok3F9uTC3h9AHaiP24mqTzioiSZlinYwUHtsrCfOw3kbS11JjwJR1n',
+  TOKEN_KEY: 'TOKEN_KEY'
 };
 
 /*

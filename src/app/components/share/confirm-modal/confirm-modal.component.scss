@@ -1,0 +1,65 @@
+$cdk-modal-padding: 24px;
+.confirm-modal {
+
+  min-width: 500px;
+  max-width: 600px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 1rem;
+
+  .title {
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+    margin-bottom: #{$cdk-modal-padding};
+
+    &:after {
+      position: absolute;
+      z-index: -1;
+      content: '';
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: calc(100% + #{$cdk-modal-padding} * 2 );
+      height: calc(100% + #{$cdk-modal-padding} * 2);
+      transform: translate(-#{$cdk-modal-padding}, -#{$cdk-modal-padding});
+      background-color: #ff8f58;
+    }
+  }
+
+  .msg {
+    padding: #{$cdk-modal-padding} 0;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .action-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn-outline-danger {
+      min-width: 250px;
+      margin-right: 1rem;
+      border-radius: 2rem;
+      .material-icons {
+        font-size: 18px;
+      }
+    }
+
+    .btn-outline-primary {
+      min-width: 200px;
+      margin-left: 1rem;
+      border-radius: 2rem;
+    }
+  }
+}
+
+

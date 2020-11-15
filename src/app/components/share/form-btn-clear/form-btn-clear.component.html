@@ -1,0 +1,4 @@
+<button type="button" mat-button mat-icon-button aria-label="Clear"
+        *ngIf="control?.value?.length" (click)="control.setValue(null)">
+  <mat-icon>close</mat-icon>
+</button>

@@ -1,0 +1,20 @@
+.card {
+  width: 500px;
+
+  .card-header {
+    background: transparent;
+    color: #ff9447;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-align: center;
+  }
+}
+
+:host ::ng-deep app-user-form .action-btn-group {
+  justify-content: center;
+  .action-btn {
+    width: 50%;
+  }
+}

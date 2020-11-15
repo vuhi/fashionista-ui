@@ -1,0 +1,11 @@
+<div class="title">
+  <fa-icon [icon]="faUserPlus" size="lg"></fa-icon>
+  <span>Create User</span>
+</div>
+<app-user-form
+  [mode]="mode"
+  [error]="error"
+  [buttonConfig]="buttonConfig"
+  (actionOutput)="createUser($event)"
+  (cancelOutPut)="cancel()">
+</app-user-form>

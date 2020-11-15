@@ -1,0 +1,21 @@
+<div class="grid pt-5" @fadeInFWD>
+  <img src="../../../assets/welcome.svg" alt="welcome-img"/>
+  <div style="position: relative">
+    <div class="card border-0 shadow p-3">
+      <h3 class="text-center">Welcome to <span style="color: #ff9447; font-size: 25px; font-weight: 800">Fashionista</span></h3>
+      <p class="text-center font-monospace bg-light">
+        <fa-icon class="left" [icon]="faQuoteLeft"></fa-icon>
+        When the going gets tough, the tough go online shopping
+        <fa-icon class="right" [icon]="faQuoteRight"></fa-icon>
+      </p>
+      <app-carousel></app-carousel>
+      <button
+        class="let-shop-btn"
+        mat-button mat-raised-button color="ui-warning"
+        [routerLink]="['/', 'home', 'explore']">
+        Let Shop!
+        <mat-icon>follow_the_signs</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

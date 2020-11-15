@@ -1,0 +1,25 @@
+.carousel, .carousel-inner, .carousel-item {
+  height: 100%;
+}
+
+.carousel-item {
+  //background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  .item-image {
+    border-radius: 20px;
+    height: 480px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .item-name {
+    padding: 5px 10px;
+    text-shadow: 0 0 3px rgba(117, 117, 117, 0.12);
+    backdrop-filter: blur(5px);
+    display: inline-block;
+  }
+}
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: .7;
+}

@@ -1,0 +1,53 @@
+<div class="card border-0 p-3" @fadeInFWD>
+  <div class="row">
+    <div class="col-lg-6">
+      <img class="w-100 rounded-lg shadow-sm" [src]="product?.image" alt="product-img"/>
+    </div>
+    <div class="col-lg-6">
+      <h2 class="product-name">&nbsp;{{product?.name}}</h2>
+      <mat-chip-list>
+        <mat-chip color="ui-light">{{product?.price | currency}}</mat-chip>
+        <mat-chip color="ui-secondary">
+          <fa-icon [icon]="faTags"></fa-icon>
+          &nbsp;{{product?.brand}}
+        </mat-chip>
+        <mat-chip color="{{stock?.color}}">{{stock?.text}}</mat-chip>
+      </mat-chip-list>
+      <p class="text-muted mt-2">Description:</p>
+      <p>{{product?.description}}</p>
+      <p class="text-muted mt-2">Please select a number of quantity:</p>
+      <div class="border d-inline-block rounded-lg border-0 shadow-sm">
+        <button class="regular-disabled"
+                mat-button
+                [disabled]="selectedQuantity===0 || isInCart"
+                (click)="selectedQuantity = selectedQuantity - 1">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span class="mx-2">{{selectedQuantity}}</span>
+        <button class="regular-disabled"
+                mat-button
+                [disabled]="selectedQuantity===product?.quantity || isInCart"
+                (click)="selectedQuantity = selectedQuantity + 1">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <br/><br/>
+      <div class="mt-4 mb-3">
+        <button
+          mat-raised-button color="ui-warning"
+          class="mr-3" style="width: 200px"
+          (click)="addItemToCart()" [disabled]="selectedQuantity <= 0 || isInCart">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+<!--        <button mat-raised-button color="ui-primary" style="width: 200px">-->
+<!--          <mat-icon>bookmarks</mat-icon>-->
+<!--          Add to Wishlist-->
+<!--        </button>-->
+      </div>
+      <div *ngIf="isInCart" class="alert alert-warning" @fadeInFWD>Product was saved in cart</div>
+    </div>
+  </div>
+</div>
+
+

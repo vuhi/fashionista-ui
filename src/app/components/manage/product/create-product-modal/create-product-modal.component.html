@@ -1,0 +1,11 @@
+<div class="title">
+  <mat-icon>add_business</mat-icon>
+  <span>Create Product</span>
+</div>
+<app-product-form
+  [mode]="mode"
+  [error]="error"
+  [buttonConfig]="buttonConfig"
+  (actionOutput)="createProduct($event)"
+  (cancelOutPut)="cancel()">
+</app-product-form>

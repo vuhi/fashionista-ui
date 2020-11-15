@@ -1,0 +1,89 @@
+<form role="form" [formGroup]="productForm" class="d-flex flex-column align-items-center justify-content-center">
+  <div class="row mb-2 mt-4">
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Name</mat-label>
+        <input matInput required [maxLength]="PRODUCT_NAME_MAX_LEN" formControlName="name">
+        <app-form-btn-clear [control]="name" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: Aloha T-Shirt</mat-hint>
+        <mat-hint align="end">{{name.value?.length}} / {{PRODUCT_NAME_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="name"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Image</mat-label>
+        <input matInput required [maxLength]="IMG_URL_MAX_LEN" formControlName="image">
+        <app-form-btn-clear [control]="image" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: https://picsum.photos/200/300</mat-hint>
+        <mat-hint align="end">{{image.value?.length}} / {{IMG_URL_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="image" [patternErr]="imageError"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Brand</mat-label>
+        <input matInput required [maxLength]="PRODUCT_BRAND_MAX_LEN" formControlName="brand">
+        <app-form-btn-clear [control]="brand" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: Apolo .co</mat-hint>
+        <mat-hint align="end">{{brand.value?.length}} / {{PRODUCT_BRAND_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="brand"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Description</mat-label>
+        <textarea required matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="8"
+                  [maxLength]="PRODUCT_DESC_MAX_LEN"  formControlName="description" >
+        </textarea>
+        <app-form-btn-clear [control]="description" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: 90% Polyester, 10% Spandex</mat-hint>
+        <mat-hint align="end">{{description.value?.length}} / {{PRODUCT_DESC_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="description"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Price</mat-label>
+        <!-- change API to get whole number or do some pipe here  -->
+        <input type="number" matInput required [min]="PRODUCT_PRICE_MIN" formControlName="price">
+        <app-form-btn-clear [control]="price" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: 17.99</mat-hint>
+        <mat-error><app-form-error [control]="price"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Quantity</mat-label>
+        <input type="number" matInput required [min]="PRODUCT_QUANTITY_MIN" formControlName="quantity">
+        <app-form-btn-clear [control]="quantity" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: 10</mat-hint>
+        <mat-error><app-form-error [control]="quantity"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="action-btn-group">
+    <button type="button"
+            mat-raised-button
+            color="{{buttonConfig?.action?.color}}"
+            class="action-btn"
+            [disabled]="isDisable"
+            (click)="action()">
+      {{buttonConfig?.action?.text}}
+    </button>
+
+    <button *ngIf="buttonConfig?.cancel"
+            type="button"
+            mat-raised-button
+            color="{{buttonConfig?.cancel?.color}}"
+            class="action-btn ml-2"
+            (click)="cancel()">
+      {{buttonConfig?.cancel?.text}}
+    </button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger w-100 mt-4 mb-0" role="alert" @fadeSlideInOut>
+    {{error}}
+  </div>
+</form>
+

@@ -1,0 +1,12 @@
+<div class="title">
+  <fa-icon [icon]="faUserEdit" size="lg"></fa-icon>
+  <span>Edit User</span>
+</div>
+<app-user-form
+  [mode]="mode"
+  [error]="error"
+  [buttonConfig]="buttonConfig"
+  [user]="data?.user"
+  (actionOutput)="editUser($event)"
+  (cancelOutPut)="cancel()">
+</app-user-form>

@@ -1,0 +1,12 @@
+<div class="title">
+  <mat-icon>design_services</mat-icon>
+  <span>Edit Product</span>
+</div>
+<app-product-form
+  [mode]="mode"
+  [error]="error"
+  [buttonConfig]="buttonConfig"
+  [product]="data?.product"
+  (actionOutput)="editProduct($event)"
+  (cancelOutPut)="cancel()">
+</app-product-form>

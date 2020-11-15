@@ -1,0 +1,5 @@
+<span *ngIf="control?.errors?.required">This field is required</span>
+<span *ngIf="control?.errors?.maxlength;let err">The maximum length is {{err['requiredLength']}}</span>
+<span *ngIf="control?.errors?.minlength;let err">The minimum length is {{err['requiredLength']}}</span>
+<span *ngIf="control?.errors?.pattern">{{patternErr}}</span>
+<span *ngIf="customErr && control?.errors && control?.errors[customErr.type]">{{customErr?.errMessage}}</span>

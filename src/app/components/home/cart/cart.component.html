@@ -1,0 +1,71 @@
+<div class="card border-0 p-3" @fadeInFWD>
+  <ng-container *ngIf="cart?.items?.length; else noItems">
+    <div class="row mb-5" style="height: 300px" *ngFor="let item of cart?.items">
+      <div class="col-lg-4" style="height: inherit">
+        <img class="w-100 h-100 rounded-lg shadow-sm" style="object-fit: scale-down" [src]="item?.product?.image" alt="product-img"/>
+      </div>
+      <div class="col-lg-8 grid" style="height: inherit">
+        <div>
+          <h2 class="product-name">&nbsp;{{item?.product?.name}}</h2>
+          <mat-chip-list>
+            <mat-chip color="ui-light">{{item?.product?.price | currency}}</mat-chip>
+            <mat-chip color="ui-secondary">
+              <fa-icon [icon]="faTags"></fa-icon>
+              &nbsp;{{item?.product?.brand}}
+            </mat-chip>
+            <mat-chip color="{{stock(item?.product).color}}">{{stock(item?.product).text}}</mat-chip>
+          </mat-chip-list>
+          <p class="text-muted mt-2">Please select a number of quantity:</p>
+          <div class="border d-inline-block rounded-lg border-0 shadow-sm">
+            <button class="regular-disabled"
+                    mat-button
+                    [disabled]="item?.quantity <= 1"
+                    (click)="item.quantity = item.quantity - 1; item.isUpdating = !(item.quantity === item.originalQuantity)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="mx-2">{{item?.quantity}}</span>
+            <button class="regular-disabled"
+                    mat-button
+                    [disabled]="item?.quantity === item?.product?.quantity"
+                    (click)="item.quantity = item.quantity + 1; item.isUpdating = !(item.quantity === item.originalQuantity)">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button class="regular-disabled"
+                    mat-button
+                    [disabled]="!item?.isUpdating"
+                    (click)="updateItemQuantity(item?.product._id, item?.quantity)">
+              <mat-icon>sync</mat-icon>&nbsp;Update
+            </button>
+            <button class="regular-disabled"
+                    mat-button
+                    color="ui-danger"
+                    (click)="removeItemFromCart(item?.product._id, item?.quantity)">
+              <mat-icon>remove_shopping_cart</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 mb-0 alert alert-warning p-2">
+          <span class="h6 font-weight-bold">TOTAL: </span>&nbsp;&nbsp;{{ item.quantity * item.product.price | currency }}
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="d-flex flex-row">
+      <button mat-raised-button color="ui-warning" class="w-50 mr-2" [disabled]="isDisable" (click)="makePayment()">
+        <mat-icon>payments</mat-icon>
+        <span class="h5 ml-3">PAY</span>
+      </button>
+      <div class="mb-0 ml-2 alert alert-danger w-50">
+        <span class="h6 font-weight-bold">SUB TOTAL: </span>&nbsp;&nbsp;{{subTotal | currency }}
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noItems>
+    <div class="alert alert-warning">
+      There is no items in cart...
+    </div>
+  </ng-template>
+</div>
+<br/>
+<br/>
+<br/>

@@ -1,0 +1,104 @@
+<form role="form" [formGroup]="userForm" class="d-flex flex-column align-items-center justify-content-center">
+  <div class="row mb-2 mt-4">
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>First Name</mat-label>
+        <input matInput required [maxLength]="USER_FN_MAX_LEN" formControlName="firstName">
+        <app-form-btn-clear [control]="firstName" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: John</mat-hint>
+        <mat-hint align="end">{{firstName.value?.length}} / {{USER_FN_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="firstName"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Last Name</mat-label>
+        <input matInput required [maxLength]="USER_LN_MAX_LEN" formControlName="lastName">
+        <app-form-btn-clear [control]="lastName" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: Doe</mat-hint>
+        <mat-hint align="end">{{lastName.value?.length}} / {{USER_LN_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="lastName"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Email</mat-label>
+        <input matInput required [maxLength]="USER_EMAIL_MAX_LEN" formControlName="email">
+        <app-form-btn-clear [control]="email" matSuffix></app-form-btn-clear>
+        <mat-hint align="start">Ex: johndoe@email.com</mat-hint>
+        <mat-hint align="end">{{email.value?.length}} / {{USER_EMAIL_MAX_LEN}}</mat-hint>
+        <mat-error><app-form-error [control]="email" [patternErr]="'Please use a valid email'"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div *ngIf="mode === CREATE" class="col-12 mb-3">
+      <mat-form-field appearance="outline" class="input-fill-color">
+        <mat-label>Role</mat-label>
+        <mat-select required formControlName="role">
+          <mat-option *ngFor="let option of roles" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start">Please select a role</mat-hint>
+        <mat-error><app-form-error [control]="role"></app-form-error></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="mode === EDIT" class="col-12">
+      <button type="button" class="btn btn-secondary edit-pw-btn" (click)="toggleEditPW()">
+        <fa-icon [icon]="faKey" [size]="'2x'"></fa-icon>
+        <div class="ml-2">
+          <p>Edit Password</p>
+          <p [class.enabled]="enablePW">{{ enablePW ? 'Enabled' : 'Disabled'}}</p>
+        </div>
+      </button>
+    </div>
+    <div *ngIf="enablePW" @expandCollapse>
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline" class="input-fill-color">
+          <mat-label>Password</mat-label>
+          <input [type]="hidePW ? 'password' : 'text'" matInput required [maxLength]="100" [minLength]="USER_PW_MIN_LEN" formControlName="password">
+          <button type="button" mat-icon-button matSuffix (click)="hidePW = !hidePW" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePW">
+            <mat-icon>{{hidePW ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint>Minimum {{USER_PW_MIN_LEN}} characters and must contain letter, number, special character (@$!%*#?&)</mat-hint>
+          <mat-error><app-form-error [control]="password" [patternErr]="passwordHintError"></app-form-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mb-3">
+        <mat-form-field appearance="outline" class="input-fill-color">
+          <mat-label>Confirm Password</mat-label>
+          <input [type]="hideConfirmPW ? 'password' : 'text'" matInput required [maxLength]="100" formControlName="confirmPassword">
+          <button type="button" mat-icon-button matSuffix (click)="hideConfirmPW = !hideConfirmPW" [attr.aria-label]="'Hide Confirm password'" [attr.aria-pressed]="hideConfirmPW">
+            <mat-icon>{{hideConfirmPW ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error><app-form-error [control]="confirmPassword" [customErr]="{ type: 'mustMatch', errMessage: 'Should match password' }"></app-form-error></mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="action-btn-group">
+    <button type="button"
+            mat-raised-button
+            color="{{buttonConfig?.action?.color}}"
+            class="action-btn"
+            [disabled]="isDisable"
+            (click)="action()">
+      {{buttonConfig?.action?.text}}
+    </button>
+
+    <button *ngIf="buttonConfig?.cancel"
+            type="button"
+            mat-raised-button
+            color="{{buttonConfig?.cancel?.color}}"
+            class="action-btn ml-2"
+            (click)="cancel()">
+      {{buttonConfig?.cancel?.text}}
+    </button>
+  </div>
+
+  <p *ngIf="mode === REGISTER" class="link" [routerLink]="['/', 'auth', 'login']">Have an account? Sign in instead!</p>
+  <div *ngIf="error" class="alert alert-danger w-100 mt-4 mb-0" role="alert" @fadeSlideInOut>
+    {{error}}
+  </div>
+</form>
+

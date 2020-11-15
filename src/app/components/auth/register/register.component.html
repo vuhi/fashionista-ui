@@ -1,0 +1,11 @@
+<div class="card shadow-sm pt-4" @enterExitLeft>
+  <div class="card-header border-0 mt-4">Sign Up</div>
+  <div class="card-body">
+    <app-user-form
+      [mode]="mode"
+      [error]="error"
+      [buttonConfig]="buttonConfig"
+      (actionOutput)="register($event)">
+    </app-user-form>
+  </div>
+</div>

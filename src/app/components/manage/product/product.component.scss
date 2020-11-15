@@ -1,0 +1,76 @@
+table {
+  width: 100%;
+}
+
+tr.height-0 {
+  height: 0;
+}
+
+.expand-row-content {
+  overflow: hidden;
+  display: flex;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+    img {
+      width: 250px;
+      height: 300px;
+      object-fit: scale-down;
+    }
+  }
+}
+
+.border-bottom-w-0 td {
+  border-bottom-width: 0;
+}
+
+button.btn .caret {
+  transition: tranform 300ms ease-in-out;
+
+  &.caret-down {
+    transform: rotate(90deg);
+  }
+}
+
+//
+//.example-element-description {
+//  padding: 16px;
+//}
+//
+//.example-element-description-attribution {
+//  opacity: 0.5;
+//}
+
+//::ng-deep tbody tr:hover {
+//  background: rgba(0, 0, 0, 0.02) !important;
+//}
+
+.title {
+  font-weight: 800;
+  //font-size: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 20px 0;
+  padding: 5px 30px 5px 5px;
+  border-radius: 8px 55px 10px 8px;
+  background: #24aa86;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+
+  mat-icon {
+    line-height: 20px;
+  }
+}
+
+//.add-product-btn {
+//  background-color: rgba(0, 0, 0, 0.2);
+//  transition: background-color 200ms ease-in-out;
+//  margin-right: 10px;
+//  &:hover {
+//    background-color: rgba(217, 213, 102, 0.2);
+//  }
+//}
+

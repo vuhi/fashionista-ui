@@ -1,0 +1,12 @@
+.action-btn-group {
+  display: flex;
+  width: 100%;
+  .action-btn {
+    min-width: 180px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+}
+
+

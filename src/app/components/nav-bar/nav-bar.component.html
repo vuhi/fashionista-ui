@@ -1,0 +1,62 @@
+<mat-toolbar class="nav" *ngIf="user">
+  <button mat-button class="app-title" [routerLink]="['/', 'home']" @popInSlitOut>
+    <img class="app-icon" src="../../../assets/shop-icon.svg" alt="icon"/>
+    <span><span class="h2">&#x02131;</span>ashionista</span>
+  </button>
+  <div class="ml-auto px-4">
+    <button *ngIf="user?.role === ADMIN"
+            @popInSlitOut
+            class="btn btn-sm menu-toggle shadow-sm"
+            mat-button [matMenuTriggerFor]="menuManage" >
+      <mat-icon class="mr-1">local_police</mat-icon>
+      <span class="font-weight-bold h6">Manage</span>
+      <mat-icon class="text-muted">play_arrow</mat-icon>
+      <mat-menu #menuManage="matMenu" yPosition="below" xPosition="before">
+        <button mat-menu-item class="px-4" [routerLink]="['/', 'manage', 'users']">
+          <mat-icon>escalator_warning</mat-icon>
+          <span>Users</span>
+        </button>
+        <button mat-menu-item class="px-4" [routerLink]="['/', 'manage', 'products']">
+          <mat-icon>layers</mat-icon>
+          <span>Products</span>
+        </button>
+      </mat-menu>
+    </button>
+
+    <button @popInSlitOut
+            class="btn bg-info text-white menu-toggle"
+            [routerLink]="['/', 'home', 'explore']">
+      <mat-icon class="mr-1 icon">shopping_basket</mat-icon>
+      <span class="font-weight-bold h6 m-0">Explore</span>
+    </button>
+
+    <button @popInSlitOut
+            class="btn bg-warning text-dark menu-toggle"
+            mat-button [matMenuTriggerFor]="menu" >
+      <mat-icon class="mr-1 icon">person_pin</mat-icon>
+      <span class="font-weight-bold h6">{{user?.firstName}} {{user?.lastName}}</span>
+      <mat-icon>more_vert</mat-icon>
+      <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+        <button mat-menu-item class="px-4" disabled>
+          <mat-icon>assignment_ind</mat-icon>
+          <span>Edit Info</span>
+        </button>
+        <button mat-menu-item class="px-4" disabled>
+          <mat-icon>bookmarks</mat-icon>
+          <span>Wish list</span>
+        </button>
+      </mat-menu>
+    </button>
+    <button @popInSlitOut
+            mat-button mat-icon-button
+            [matBadge]="cartItems" matBadgePosition="after" matBadgeColor="accent"
+            [ngClass]="{ 'hidden': cartItems < 1, 'jello-horizontal': cartItems > 0 }"
+            class="shopping-cart ml-4 mr-1 pr-1"
+            [routerLink]="['/', 'home', 'cart']">
+      <img src="../../../assets/shopping-cart.svg" alt="shopping-cart-img" height="30" width="30"/>
+    </button>
+    <button mat-button mat-icon-button class="mx-2" (click)="signOut()">
+      <mat-icon class="text-danger font-weight-bold">power_settings_new</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
