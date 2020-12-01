@@ -88,7 +88,6 @@ export class UserComponent implements OnInit, OnDestroy, AfterViewInit  {
 
     createUserModal.afterClosed().subscribe(res => {
       if (res) {
-        console.log(res);
         this.toastr.success('User has been created', 'Created');
         this.dataSource.data.push(res);
         this.dataSource.data = [...this.dataSource.data];

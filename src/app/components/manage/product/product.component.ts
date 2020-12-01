@@ -50,7 +50,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   openCreateProductModal(): void {
-    console.log('called');
     const createProductModal = this.dialog.open(CreateProductModalComponent, {
       width: '600px', autoFocus: false,
       data: { mode: FormMode.CREATE, title: 'Create Product' }
@@ -83,7 +82,7 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
 
   deleteProduct(id: string): void {
     const confirmModal = this.dialog.open(ConfirmModalComponent, {
-      data: { title: `Delete user`, msg: 'Are you sure, it will be delete?' }
+      data: { title: `Delete product`, msg: 'Are you sure, it will be delete?' }
     });
 
     confirmModal.afterClosed().pipe(
@@ -99,7 +98,6 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   triggerExpand(element: Product): void {
-    console.log(element);
     element.expand = !!!element.expand;
     this.isExpanded = !this.isExpanded;
   }

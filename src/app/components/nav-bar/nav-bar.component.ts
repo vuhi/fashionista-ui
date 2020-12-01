@@ -34,8 +34,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
         this.cartItems = this.user?.cart?.items
           .map(i => i.quantity)
           .reduce((acc, current) => acc + current, 0);
-        console.log(res);
-        console.log(this.cartItems);
       });
   }
 
